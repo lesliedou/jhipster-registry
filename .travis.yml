@@ -14,3 +14,9 @@ script:
   - docker ps
   - docker logs jhipster-registry
   - curl -v http://localhost:8761
+
+after_success:
+# 当代码测试通过后执行的命令
+- docker build -t tarra201406/jhipster-registry .
+- docker push tarra201406/jhipster-registry
+
