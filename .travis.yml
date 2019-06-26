@@ -6,6 +6,9 @@ install:
   - docker build -t jhipster/jhipster-registry:travis .
   - docker images
   - docker run --name jhipster-registry -p 8761:8761 -d -t jhipster/jhipster-registry:travis
+before_script:
+# 登录到 docker hub
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 script:
   - sleep 45
   - docker ps
